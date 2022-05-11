@@ -7,22 +7,26 @@ describe('Turns', () => {
 
   it('should be a function', () => {
     const turn = new Turns()
+
     expect(Turns).to.be.a('function');
   });
 
   it('should be an instance of turn', () => {
     const turn = new Turns()
+
     expect(turn).to.be.an.instanceof(Turns);
   });
   
   it("should store a user's guess to a question", () => {
     const turn = new Turns('prototype method')
+
     expect(turn.guess).to.equal('prototype method');
   });
 
   it('should recognize current card in play', () => {
     const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object')
     const turn = new Turns('array', card)
+
     expect(turn.card).to.be.an.instanceof(Card);
   });
 
@@ -32,7 +36,7 @@ describe('Turns', () => {
 
     turn.returnGuess()
 
-    expect(turn.guess).to.equal('accessor method')
+    expect(turn.returnGuess()).to.equal('accessor method')
   })
 
   it('should return cards', () => {
@@ -41,7 +45,7 @@ describe('Turns', () => {
 
     turn.returnCard()
 
-    expect(turn.card).to.equal(card);
+    expect(turn.returnCard()).to.equal(card);
   });
 
   it('should evaluate if the guess is correct or not', () => {
