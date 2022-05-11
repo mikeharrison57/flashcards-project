@@ -44,4 +44,32 @@ describe('Turns', () => {
     expect(turn.card).to.equal(card);
   });
 
+  it('should evaluate if the guess is correct or not', () => {
+    const card = new Card(4, 'What type of prototype method does not modify the existing array but returns a particular representation of the array?', ["mutator method", "accessor method", "iteration method"], 'accessor method')
+    const turn = new Turns('mutator method', card)
+    const nextTurn = new Turns('accessor method', card)
+
+    turn.evaluateGuess()
+    nextTurn.evaluateGuess() 
+
+    expect(turn.evaluateGuess()).to.be.false;
+    expect(nextTurn.evaluateGuess()).to.be.true;
+  });
+
+  it('should give feedback for correct and incorrect answers', () => {
+    const card = new Card(4, 'What type of prototype method does not modify the existing array but returns a particular representation of the array?', ["mutator method", "accessor method", "iteration method"], 'accessor method')
+    const turn = new Turns('mutator method', card)
+    const nextTurn = new Turns('accessor method', card)
+    
+    turn.evaluateGuess()
+    turn.giveFeedback()
+    nextTurn.evaluateGuess()
+    nextTurn.giveFeedback()
+
+    expect(turn.evaluateGuess()).to.be.false;
+    expect(turn.giveFeedback()).to.equal('incorrect!');
+    expect(nextTurn.evaluateGuess()).to.be.true;
+    expect(nextTurn.giveFeedback()).to.equal('correct!')
+
+  })
 });
