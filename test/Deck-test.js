@@ -6,7 +6,7 @@ const Card = require('../src/Card');
 describe('Deck', () => {
 
   it('should be a function', () => {
-    
+
     expect(Deck).to.be.a('function')
   });
 
@@ -35,4 +35,5 @@ describe('Deck', () => {
     expect(deck1.countCards()).to.deep.equal(3)
 
   });
+
 });
