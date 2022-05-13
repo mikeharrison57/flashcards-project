@@ -11,20 +11,21 @@ class Round {
     return this.currentCard;
   }
   takeTurn(guess) {
-    console.log('DECK', this.deck)
-    console.log('DECK.CARDS', this.deck.cards)
-    console.log('CURRENTCARD', this.currentCard)
+    // console.log('DECK', this.deck)
+    // console.log('DECK.CARDS', this.deck.cards)
+    // console.log('CURRENTCARD', this.currentCard)
     let turn = new Turns(guess, this.currentCard);
     this.turns++
     this.currentCard = this.deck.cards[this.turns];
     console.log(turn, 'line 16, round file')
     if(!turn.evaluateGuess()) {
       this.incorrectGuesses.unshift(turn.card.id)
+      return turn.giveFeedback();
     } else {
-      return turn.giveFeedback
+      return turn.giveFeedback();
     }
     // turn.giveFeedback();
-    return turn
+    // return turn
   }
 }
 

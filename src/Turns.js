@@ -13,7 +13,7 @@ class Turns {
     return this.card;
   }
   evaluateGuess() {
-    console.log(this.card.correctAnswer, 'LINE 16, TURN FILE');
+    // console.log(this.card.correctAnswer, 'LINE 16, TURN FILE');
     if(this.guess === this.card.correctAnswer) {
       return true
     } else {
