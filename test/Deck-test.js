@@ -30,7 +30,7 @@ describe('Deck', () => {
     const card3 = new Card(12, "What is Travis's middle name?", ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
     const deck1 = new Deck([card1, card2, card3]);
 
-    deck1.countCards()
+    deck1.countCards();
 
     expect(deck1.countCards()).to.deep.equal(3)
 

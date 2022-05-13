@@ -58,18 +58,42 @@ describe('Round', () => {
     const card2 = new Card(14, "What organ is Khalid missing?", ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
     const card3 = new Card(12, "What is Travis's middle name?", ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
     const deck1 = new Deck([card1, card2, card3]);
-    const round = new Round(deck1, 0, []);
+    const round = new Round(deck1);
 
     round.takeTurn('sea otter');
+    console.log(round.turns, 'line 64, test file');
     round.takeTurn('pug');
     round.takeTurn('capybara');
 
     expect(round.turns).to.equal(3);
   });
+
+  it('should change the current card', () => {
+    const card1 = new Card(1, "What is Robbie's favorite animal", ['sea otter', 'pug', 'capybara'], 'sea otter');
+    const card2 = new Card(14, "What organ is Khalid missing?", ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
+    const card3 = new Card(12, "What is Travis's middle name?", ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
+    const deck1 = new Deck([card1, card2, card3]);
+    const round = new Round(deck1);
+
+    round.takeTurn('appendix');
+
+    expect(round.returnCurrentCard()).to.deep.equal(card2)
+  });
+  
+  it('should evaluate and record incorrect guesses', () => {
+    const card1 = new Card(1, "What is Robbie's favorite animal", ['sea otter', 'pug', 'capybara'], 'sea otter');
+    const card2 = new Card(14, "What organ is Khalid missing?", ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
+    const card3 = new Card(12, "What is Travis's middle name?", ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
+    const deck1 = new Deck([card1, card2, card3]);
+    const round = new Round(deck1);
+
+    round.takeTurn('William')
+
+    expect(round.takeTurn('William')).to.equal(false)
+    // expect(round.takeTurn('William')).to.equal('incorrect!')
+    // expect(turn.giveFeedback()).to.equal('incorrect!');
+  });
 });
 
-// When a guess is made, a new Turn instance is created.
-// The turns count is updated, regardless of whether the guess is correct or incorrect
-// The next card becomes current card
 // Guess is evaluated/recorded. Incorrect guesses will be stored (via the id) in an array of incorrectGuesses
 // Feedback is returned regarding whether the guess is incorrect or correct

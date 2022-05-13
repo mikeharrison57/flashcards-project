@@ -9,9 +9,11 @@ class Turns {
     return this.guess; 
   }
   returnCard() {
+    
     return this.card;
   }
   evaluateGuess() {
+    console.log(this.card.correctAnswer, 'LINE 16, TURN FILE');
     if(this.guess === this.card.correctAnswer) {
       return true
     } else {
@@ -19,7 +21,7 @@ class Turns {
     }
   }
   giveFeedback() {
-    if(this.guess === this.card.correctAnswer) {
+    if(this.evaluateGuess()) {
       return 'correct!'
     } else {
       return 'incorrect!'
