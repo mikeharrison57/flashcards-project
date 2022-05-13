@@ -9,6 +9,7 @@ class Turns {
     return this.guess; 
   }
   returnCard() {
+    
     return this.card;
   }
   evaluateGuess() {
@@ -19,7 +20,7 @@ class Turns {
     }
   }
   giveFeedback() {
-    if(this.guess === this.card.correctAnswer) {
+    if(this.evaluateGuess()) {
       return 'correct!'
     } else {
       return 'incorrect!'
