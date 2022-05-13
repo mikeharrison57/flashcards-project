@@ -16,6 +16,7 @@ class Round {
     this.currentCard = this.deck.cards[this.turns];
     if(!turn.evaluateGuess()) {
       this.incorrectGuesses.unshift(turn.card.id)
+      console.log(this.incorrectGuesses)
       return turn.giveFeedback();
     } else {
       return turn.giveFeedback();
